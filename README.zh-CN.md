@@ -1,37 +1,55 @@
-# 电路需求与仿真证据
+# Circuit Evidence · 电路仿真验收
 
-这个小仓库让后台 Agent 提交**电路连接、题目文字和验收条件**，用本机 LTspice 跑一次仿真，再拿回每项测量、通过或失败的检查，以及可复查的证据文件。
+**AI 交来的电路，具体通过了哪几项检查？**
 
-可以直接问 Agent：「跑一下三端电阻黑盒的反例，告诉我哪些端口不符合，打开证据文件。」后台工具会提交 `{"case_id":"resistor-blackbox","variant":"negative"}`。
+把电路连接、题目要求和检查条件交给 Circuit Evidence。它在 Windows 上调用 LTspice，把每条要求对应的测量值、通过或失败的结论，以及原始仿真文件一起交回来。你可以用命令行复现，也可以让后台 Agent 通过本地 MCP 调用。
 
-| 示例 | 正例 | 反例 |
-|---|---|---|
-| 双端电机驱动 | 两端输出在理想模型中实现所需差分 | 反馈电阻 10 kΩ 改成 20 kΩ。中点仍正确，8 项检查失败 |
-| 三端电阻黑盒 | 三组端口测得 1.5、3.0、2.5 Ω | 交换 B、C 支路。B–C 仍正确，另外两组各有一项检查失败 |
+[English](README.md) · [快速开始](#快速开始) · [接入 Agent](#接入-agent) · [v0.1.0 发布页](https://github.com/wilianyichen/circuit-evidence/releases/tag/v0.1.0)
 
-来源为 MIT 6.01SC [复习题 13–14](https://ocw.mit.edu/courses/6-01sc-introduction-to-electrical-engineering-and-computer-science-i-spring-2011/56e33ac20f7bffe456a08f307b9eb6b9_MIT6_01SCS11_mid02_review.pdf#page=13) 与 MIT 6.002 [第 1 次作业第 1-3 题](https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/pages/assignments/)。`requirements.txt` 是我们整理的文字，原题请查看课程链接。两道题采用理想元件。电机例的运放由线性受控源表示，无法验证实际供电摆幅、输出电流或电机动态。题目由项目选取，结果用于回归。
+## 实际仿真发现两条支路接反了
 
-## 本地运行
+三端电阻黑盒里，交换 B、C 两条支路后，B–C 的读数依然正确。把三个端口组合都测一遍，就能看出问题出在哪里。
 
-安装 Python 3.12 和 Windows 版 [LTspice](https://www.analog.com/cn/resources/design-tools-and-calculators/ltspice-simulator.html)。在仓库目录用 PowerShell 执行。将示例路径改成本机路径。
+| 端口 | 题目要求 | 反例测得 | 检查结果 |
+| :--- | ---: | ---: | :--- |
+| A–B | 1.50 Ω | 2.50 Ω | 超过上限 |
+| B–C | 3.00 Ω | 3.00 Ω | 通过 |
+| A–C | 2.50 Ω | 1.50 Ω | 低于下限 |
+
+这是 LTspice 26.1.1 的运行结果。测试时让第三端开路、注入 1 mA，由模拟电压换算阻值。报告会指出 `ab_hi` 和 `ac_lo` 两项失败，并把「使用五个 1 Ω 电阻」这条要求标为待复核。[案例定义](examples/resistor-blackbox/case.json)
+
+## 快速开始
+
+安装 Python 3.12 和 Windows 版 [LTspice](https://www.analog.com/cn/resources/design-tools-and-calculators/ltspice-simulator.html)。在仓库目录打开 PowerShell，按本机安装位置修改 LTspice 路径。
 
 ```powershell
 py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+$python = ".\.venv\Scripts\python.exe"
+& $python -m pip install -r requirements.txt
 $ltspice = "$env:LOCALAPPDATA\Programs\ADI\LTspice\LTspice.exe"
-.\.venv\Scripts\python.exe run_evidence.py --ltspice $ltspice
+& $python run_evidence.py --ltspice $ltspice --case resistor-blackbox --variant negative
 ```
 
-退出码 0 表示四次回归与预期相符。反例的证据中仍会显示电路检查失败。用 `--case motor-drive --variant negative` 可单跑一份。每次在 `runs/` 下建独立目录，保存需求文本、检查声明、实际运行的 `.cir`、原始 `.raw`、LTspice 日志和 `evidence.json`。打开 `requirements` 看原需求与检查的对应关系，打开 `checks` 看数值和阈值，打开 `files` 看对应文件哈希。
+命令会给出 `evidence.json` 的路径。这个反例的退出码为 0，表示**成功复现了预期的两项失败**。去掉 `--case` 和 `--variant`，即可运行全部四组回归。
 
-## 后台 Agent 接入
+| 内置案例 | 正例 | 故意引入的错误 |
+| :--- | :--- | :--- |
+| [三端电阻黑盒](examples/resistor-blackbox/) | 6/6 项通过 | 交换两条支路，2 项失败 |
+| [差分电机驱动](examples/motor-drive/) | 25/25 项通过 | 反馈电阻从 10 kΩ 改为 20 kΩ，8 项失败 |
+
+## 接入 Agent
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements-mcp.txt
-.\.venv\Scripts\python.exe smoke_mcp.py $ltspice ./mcp-smoke-runs
+& $python -m pip install -r requirements-mcp.txt
+& $python smoke_mcp.py $ltspice ./mcp-smoke-runs
 ```
 
-在支持 stdio MCP 的客户端添加一个本地服务。下面是采用 `mcpServers` 配置的客户端示例。把两条绝对路径换成实际安装位置。
+这条测试会通过 stdio 实际调用 MCP，并验证自定义分压器的输出为 **2.000 V**。
+
+<details>
+<summary>展开本地 MCP 配置</summary>
+
+如果客户端使用 `mcpServers`，把下面的示例绝对路径换成本机路径。
 
 ```json
 {
@@ -48,14 +66,19 @@ $ltspice = "$env:LOCALAPPDATA\Programs\ADI\LTspice\LTspice.exe"
 }
 ```
 
-- `run_circuit_example(case_id, variant)` 重跑固定的正例或反例。
-- `verify_circuit_design(source_text, requirements, elements, analysis, measurements, checks)` 接收自定义电路。可以照抄 `smoke_mcp.py` 的分压器请求，再换成自己的电路和要求。
-- 返回值包含测量、需求对应的检查状态、证据路径。Agent 提交的电路支持电阻、直流电流源、电压源（直流或 PWL）、线性电压控制电压源，以及瞬态电压点值、窗口极值和线性组合。元件的 `nodes` 顺序按 SPICE 定义，`0` 为参考地。当前没有原理图编辑和自定义器件模型入口。
+</details>
 
-## 怎样读结果
+接通后，可以把这句话交给 Agent。「跑一下三端电阻黑盒的反例，告诉我哪两组端口出错，并给出证据文件。」
 
-`linked_checks_passed_semantics_unverified` 表示关联的数值检查通过，需求解释与覆盖范围仍需审阅。没有对应检查的要求会显示为 `unresolved`。例如电机驱动的单电源实现与黑盒的器件数量在本版保留为待复核项。测量只覆盖保存的采样点和插值，原理图连接和实物表现需单独核验。小仓库直接从结构化电路生成网表，复用 spicelib 读取 RAW。MCP 复用官方 Python SDK，客户端按需启动本地子进程。
+- `run_circuit_example(case_id, variant)` 重跑内置正例或反例。
+- `verify_circuit_design(source_text, requirements, elements, analysis, measurements, checks)` 接收自定义电路和检查条件。可以从[实际跑过的分压器请求](smoke_mcp.py)改起。
 
-## 许可证
+## 报告能证明什么
 
-本仓库源码采用 GPL-3.0-only。详见 [LICENSE](LICENSE)。
+打开 `evidence.json`，从题目要求追到对应的检查、阈值和测量值。每次运行还会保存提交的需求文本 `requirements.txt`、检查声明 `contract.json`、实际执行的 `circuit.cir`、原始波形 `circuit.raw` 和 LTspice 日志 `circuit.log`。
+
+当前支持电阻、直流电流源、电压源（直流或分段线性）和线性电压控制电压源的瞬态检查。题意是否理解到位、检查是否覆盖整道题、原理图连接和实物性能，都可以再单独核验。
+
+两个案例源自 MIT OpenCourseWare，使用理想模型并作为**回归测试**。电机例以线性受控源表示运放。[电机驱动原题](https://ocw.mit.edu/courses/6-01sc-introduction-to-electrical-engineering-and-computer-science-i-spring-2011/56e33ac20f7bffe456a08f307b9eb6b9_MIT6_01SCS11_mid02_review.pdf#page=13) · [电阻黑盒原题，第 1 次作业第 1-3 题](https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/pages/assignments/)
+
+项目复用本机 LTspice、用于读取波形的 [spicelib](https://pypi.org/project/spicelib/1.5.1/) 和 [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)。源码采用 [GPL-3.0-only](LICENSE)。
