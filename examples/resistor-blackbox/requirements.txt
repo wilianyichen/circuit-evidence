@@ -1,0 +1,4 @@
+With C open, the A-B resistance is 1.5 ohms.
+With A open, the B-C resistance is 3.0 ohms.
+With B open, the A-C resistance is 2.5 ohms.
+Build the black box with five 1-ohm resistors.

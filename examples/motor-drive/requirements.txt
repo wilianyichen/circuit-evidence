@@ -1,0 +1,5 @@
+Keep both outputs between 0 V and 10 V.
+At x = 0 V the differential output is -10 V.
+At x = 10 V the differential output is +10 V.
+Use two affine functions of the input.
+Use one 10 V supply for the implementation.

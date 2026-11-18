@@ -1,0 +1,581 @@
+{
+  "source": {
+    "kind": "maintainer_paraphrase",
+    "upstream": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/pages/assignments/",
+    "sha256": "7f8fa7fd337bd6020cb64d32670e6c32d9dd692d98d58951f545c55445f3b291"
+  },
+  "analysis": {
+    "stop_s": 0.001,
+    "max_step_s": 0.00001
+  },
+  "measurements": [
+    {
+      "kind": "voltage",
+      "positive": "a1",
+      "negative": "0",
+      "at_s": 0.0005
+    },
+    {
+      "kind": "voltage",
+      "positive": "b2",
+      "negative": "0",
+      "at_s": 0.0005
+    },
+    {
+      "kind": "voltage",
+      "positive": "a3",
+      "negative": "0",
+      "at_s": 0.0005
+    }
+  ],
+  "checks": [
+    {
+      "id": "ab_lo",
+      "description": "Open-third-port a-b test voltage",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": 0.0014990000000000001,
+      "uncertainty": null,
+      "index": 0,
+      "scale": 1
+    },
+    {
+      "id": "ab_hi",
+      "description": "Open-third-port a-b test voltage",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 0.001501,
+      "uncertainty": null,
+      "index": 0,
+      "scale": 1
+    },
+    {
+      "id": "bc_lo",
+      "description": "Open-third-port b-c test voltage",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": 0.0029990000000000004,
+      "uncertainty": null,
+      "index": 1,
+      "scale": 1
+    },
+    {
+      "id": "bc_hi",
+      "description": "Open-third-port b-c test voltage",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 0.0030009999999999998,
+      "uncertainty": null,
+      "index": 1,
+      "scale": 1
+    },
+    {
+      "id": "ac_lo",
+      "description": "Open-third-port a-c test voltage",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": 0.0024990000000000004,
+      "uncertainty": null,
+      "index": 2,
+      "scale": 1
+    },
+    {
+      "id": "ac_hi",
+      "description": "Open-third-port a-c test voltage",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 0.0025009999999999998,
+      "uncertainty": null,
+      "index": 2,
+      "scale": 1
+    }
+  ],
+  "requirements": [
+    {
+      "id": "ab",
+      "quote": "With C open, the A-B resistance is 1.5 ohms.",
+      "status": "bound",
+      "bindings": [
+        {
+          "path": [
+            "checks",
+            0
+          ],
+          "expected": {
+            "id": "ab_lo",
+            "description": "Open-third-port a-b test voltage",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": ">=",
+            "threshold": 0.0014990000000000001,
+            "uncertainty": null,
+            "index": 0,
+            "scale": 1
+          }
+        },
+        {
+          "path": [
+            "checks",
+            1
+          ],
+          "expected": {
+            "id": "ab_hi",
+            "description": "Open-third-port a-b test voltage",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": "<=",
+            "threshold": 0.001501,
+            "uncertainty": null,
+            "index": 0,
+            "scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "bc",
+      "quote": "With A open, the B-C resistance is 3.0 ohms.",
+      "status": "bound",
+      "bindings": [
+        {
+          "path": [
+            "checks",
+            2
+          ],
+          "expected": {
+            "id": "bc_lo",
+            "description": "Open-third-port b-c test voltage",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": ">=",
+            "threshold": 0.0029990000000000004,
+            "uncertainty": null,
+            "index": 1,
+            "scale": 1
+          }
+        },
+        {
+          "path": [
+            "checks",
+            3
+          ],
+          "expected": {
+            "id": "bc_hi",
+            "description": "Open-third-port b-c test voltage",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": "<=",
+            "threshold": 0.0030009999999999998,
+            "uncertainty": null,
+            "index": 1,
+            "scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "ac",
+      "quote": "With B open, the A-C resistance is 2.5 ohms.",
+      "status": "bound",
+      "bindings": [
+        {
+          "path": [
+            "checks",
+            4
+          ],
+          "expected": {
+            "id": "ac_lo",
+            "description": "Open-third-port a-c test voltage",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": ">=",
+            "threshold": 0.0024990000000000004,
+            "uncertainty": null,
+            "index": 2,
+            "scale": 1
+          }
+        },
+        {
+          "path": [
+            "checks",
+            5
+          ],
+          "expected": {
+            "id": "ac_hi",
+            "description": "Open-third-port a-c test voltage",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": "<=",
+            "threshold": 0.0025009999999999998,
+            "uncertainty": null,
+            "index": 2,
+            "scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "inventory",
+      "quote": "Build the black box with five 1-ohm resistors.",
+      "status": "unresolved",
+      "bindings": []
+    }
+  ],
+  "variants": {
+    "positive": {
+      "elements": [
+        {
+          "kind": "R",
+          "ref": "R11",
+          "nodes": [
+            "a1",
+            "star1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R12",
+          "nodes": [
+            "a1",
+            "star1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R13",
+          "nodes": [
+            "0",
+            "star1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R14",
+          "nodes": [
+            "c1",
+            "series1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R15",
+          "nodes": [
+            "series1",
+            "star1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "I",
+          "ref": "ITEST1",
+          "nodes": [
+            "0",
+            "a1"
+          ],
+          "source": {
+            "dc_a": 0.001
+          }
+        },
+        {
+          "kind": "R",
+          "ref": "R21",
+          "nodes": [
+            "a2",
+            "star2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R22",
+          "nodes": [
+            "a2",
+            "star2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R23",
+          "nodes": [
+            "b2",
+            "star2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R24",
+          "nodes": [
+            "0",
+            "series2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R25",
+          "nodes": [
+            "series2",
+            "star2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "I",
+          "ref": "ITEST2",
+          "nodes": [
+            "0",
+            "b2"
+          ],
+          "source": {
+            "dc_a": 0.001
+          }
+        },
+        {
+          "kind": "R",
+          "ref": "R31",
+          "nodes": [
+            "a3",
+            "star3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R32",
+          "nodes": [
+            "a3",
+            "star3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R33",
+          "nodes": [
+            "b3",
+            "star3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R34",
+          "nodes": [
+            "0",
+            "series3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R35",
+          "nodes": [
+            "series3",
+            "star3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "I",
+          "ref": "ITEST3",
+          "nodes": [
+            "0",
+            "a3"
+          ],
+          "source": {
+            "dc_a": 0.001
+          }
+        }
+      ],
+      "expected_failed": []
+    },
+    "negative": {
+      "elements": [
+        {
+          "kind": "R",
+          "ref": "R11",
+          "nodes": [
+            "a1",
+            "star1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R12",
+          "nodes": [
+            "a1",
+            "star1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R13",
+          "nodes": [
+            "c1",
+            "star1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R14",
+          "nodes": [
+            "0",
+            "series1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R15",
+          "nodes": [
+            "series1",
+            "star1"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "I",
+          "ref": "ITEST1",
+          "nodes": [
+            "0",
+            "a1"
+          ],
+          "source": {
+            "dc_a": 0.001
+          }
+        },
+        {
+          "kind": "R",
+          "ref": "R21",
+          "nodes": [
+            "a2",
+            "star2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R22",
+          "nodes": [
+            "a2",
+            "star2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R23",
+          "nodes": [
+            "0",
+            "star2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R24",
+          "nodes": [
+            "b2",
+            "series2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R25",
+          "nodes": [
+            "series2",
+            "star2"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "I",
+          "ref": "ITEST2",
+          "nodes": [
+            "0",
+            "b2"
+          ],
+          "source": {
+            "dc_a": 0.001
+          }
+        },
+        {
+          "kind": "R",
+          "ref": "R31",
+          "nodes": [
+            "a3",
+            "star3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R32",
+          "nodes": [
+            "a3",
+            "star3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R33",
+          "nodes": [
+            "0",
+            "star3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R34",
+          "nodes": [
+            "b3",
+            "series3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "R",
+          "ref": "R35",
+          "nodes": [
+            "series3",
+            "star3"
+          ],
+          "value": 1
+        },
+        {
+          "kind": "I",
+          "ref": "ITEST3",
+          "nodes": [
+            "0",
+            "a3"
+          ],
+          "source": {
+            "dc_a": 0.001
+          }
+        }
+      ],
+      "expected_failed": [
+        "ab_hi",
+        "ac_lo"
+      ]
+    }
+  }
+}

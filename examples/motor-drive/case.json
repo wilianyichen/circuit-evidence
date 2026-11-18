@@ -1,0 +1,958 @@
+{
+  "source": {
+    "kind": "maintainer_paraphrase",
+    "upstream": "https://ocw.mit.edu/courses/6-01sc-introduction-to-electrical-engineering-and-computer-science-i-spring-2011/56e33ac20f7bffe456a08f307b9eb6b9_MIT6_01SCS11_mid02_review.pdf#page=13",
+    "sha256": "0f611cb2c5eb9cfce68f88c1ff4f79cae78d799d6fe487a5a95f2ebdb3cffb9c"
+  },
+  "analysis": {
+    "stop_s": 0.007,
+    "max_step_s": 0.00001
+  },
+  "measurements": [
+    {
+      "kind": "voltage",
+      "positive": "y1",
+      "negative": "0",
+      "at_s": 0.0005
+    },
+    {
+      "kind": "voltage",
+      "positive": "y2",
+      "negative": "0",
+      "at_s": 0.0005
+    },
+    {
+      "kind": "voltage",
+      "positive": "y1",
+      "negative": "y2",
+      "at_s": 0.0005
+    },
+    {
+      "kind": "voltage",
+      "positive": "y1",
+      "negative": "0",
+      "at_s": 0.0025
+    },
+    {
+      "kind": "voltage",
+      "positive": "y2",
+      "negative": "0",
+      "at_s": 0.0025
+    },
+    {
+      "kind": "voltage",
+      "positive": "y1",
+      "negative": "y2",
+      "at_s": 0.0025
+    },
+    {
+      "kind": "voltage",
+      "positive": "y1",
+      "negative": "0",
+      "at_s": 0.0045
+    },
+    {
+      "kind": "voltage",
+      "positive": "y2",
+      "negative": "0",
+      "at_s": 0.0045
+    },
+    {
+      "kind": "voltage",
+      "positive": "y1",
+      "negative": "y2",
+      "at_s": 0.0045
+    }
+  ],
+  "checks": [
+    {
+      "id": "point_0_min",
+      "description": "point 0 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": -0.001,
+      "uncertainty": null,
+      "index": 0,
+      "scale": 1
+    },
+    {
+      "id": "point_0_max",
+      "description": "point 0 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 0.001,
+      "uncertainty": null,
+      "index": 0,
+      "scale": 1
+    },
+    {
+      "id": "point_1_min",
+      "description": "point 1 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": 9.999,
+      "uncertainty": null,
+      "index": 1,
+      "scale": 1
+    },
+    {
+      "id": "point_1_max",
+      "description": "point 1 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 10.001,
+      "uncertainty": null,
+      "index": 1,
+      "scale": 1
+    },
+    {
+      "id": "point_2_min",
+      "description": "point 2 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": -10.001,
+      "uncertainty": null,
+      "index": 2,
+      "scale": 1
+    },
+    {
+      "id": "point_2_max",
+      "description": "point 2 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": -9.999,
+      "uncertainty": null,
+      "index": 2,
+      "scale": 1
+    },
+    {
+      "id": "point_3_min",
+      "description": "point 3 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": 4.999,
+      "uncertainty": null,
+      "index": 3,
+      "scale": 1
+    },
+    {
+      "id": "point_3_max",
+      "description": "point 3 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 5.001,
+      "uncertainty": null,
+      "index": 3,
+      "scale": 1
+    },
+    {
+      "id": "point_4_min",
+      "description": "point 4 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": 4.999,
+      "uncertainty": null,
+      "index": 4,
+      "scale": 1
+    },
+    {
+      "id": "point_4_max",
+      "description": "point 4 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 5.001,
+      "uncertainty": null,
+      "index": 4,
+      "scale": 1
+    },
+    {
+      "id": "point_5_min",
+      "description": "point 5 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": -0.001,
+      "uncertainty": null,
+      "index": 5,
+      "scale": 1
+    },
+    {
+      "id": "point_5_max",
+      "description": "point 5 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 0.001,
+      "uncertainty": null,
+      "index": 5,
+      "scale": 1
+    },
+    {
+      "id": "point_6_min",
+      "description": "point 6 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": 9.999,
+      "uncertainty": null,
+      "index": 6,
+      "scale": 1
+    },
+    {
+      "id": "point_6_max",
+      "description": "point 6 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 10.001,
+      "uncertainty": null,
+      "index": 6,
+      "scale": 1
+    },
+    {
+      "id": "point_7_min",
+      "description": "point 7 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": -0.001,
+      "uncertainty": null,
+      "index": 7,
+      "scale": 1
+    },
+    {
+      "id": "point_7_max",
+      "description": "point 7 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 0.001,
+      "uncertainty": null,
+      "index": 7,
+      "scale": 1
+    },
+    {
+      "id": "point_8_min",
+      "description": "point 8 min",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": ">=",
+      "threshold": 9.999,
+      "uncertainty": null,
+      "index": 8,
+      "scale": 1
+    },
+    {
+      "id": "point_8_max",
+      "description": "point 8 max",
+      "origin": "extra_test",
+      "kind": "measurement",
+      "comparison": "<=",
+      "threshold": 10.001,
+      "uncertainty": null,
+      "index": 8,
+      "scale": 1
+    },
+    {
+      "id": "y1_rail_min",
+      "description": "y1 rail min",
+      "origin": "extra_test",
+      "kind": "window_extremum",
+      "comparison": ">=",
+      "threshold": -0.001,
+      "uncertainty": null,
+      "index": 0,
+      "scale": 1,
+      "statistic": "min",
+      "start_s": 0,
+      "end_s": 0.007
+    },
+    {
+      "id": "y1_rail_max",
+      "description": "y1 rail max",
+      "origin": "extra_test",
+      "kind": "window_extremum",
+      "comparison": "<=",
+      "threshold": 10.001,
+      "uncertainty": null,
+      "index": 0,
+      "scale": 1,
+      "statistic": "max",
+      "start_s": 0,
+      "end_s": 0.007
+    },
+    {
+      "id": "y2_rail_min",
+      "description": "y2 rail min",
+      "origin": "extra_test",
+      "kind": "window_extremum",
+      "comparison": ">=",
+      "threshold": -0.001,
+      "uncertainty": null,
+      "index": 1,
+      "scale": 1,
+      "statistic": "min",
+      "start_s": 0,
+      "end_s": 0.007
+    },
+    {
+      "id": "y2_rail_max",
+      "description": "y2 rail max",
+      "origin": "extra_test",
+      "kind": "window_extremum",
+      "comparison": "<=",
+      "threshold": 10.001,
+      "uncertainty": null,
+      "index": 1,
+      "scale": 1,
+      "statistic": "max",
+      "start_s": 0,
+      "end_s": 0.007
+    },
+    {
+      "id": "y1_follows_x",
+      "description": "y1 follows x",
+      "origin": "extra_test",
+      "kind": "window_linear_combination",
+      "comparison": "<=",
+      "threshold": 0.001,
+      "uncertainty": null,
+      "terms": [
+        {
+          "positive": "y1",
+          "negative": "0",
+          "coefficient": 1
+        },
+        {
+          "positive": "x",
+          "negative": "0",
+          "coefficient": -1
+        }
+      ],
+      "start_s": 0,
+      "end_s": 0.007
+    },
+    {
+      "id": "y2_complements_x",
+      "description": "y2 complements x",
+      "origin": "extra_test",
+      "kind": "window_linear_combination",
+      "comparison": "<=",
+      "threshold": 0.001,
+      "uncertainty": null,
+      "terms": [
+        {
+          "positive": "y2",
+          "negative": "0",
+          "coefficient": 1
+        },
+        {
+          "positive": "x",
+          "negative": "0",
+          "coefficient": 1
+        },
+        {
+          "positive": "vdd",
+          "negative": "0",
+          "coefficient": -1
+        }
+      ],
+      "start_s": 0,
+      "end_s": 0.007
+    },
+    {
+      "id": "differential_law",
+      "description": "differential law",
+      "origin": "extra_test",
+      "kind": "window_linear_combination",
+      "comparison": "<=",
+      "threshold": 0.001,
+      "uncertainty": null,
+      "terms": [
+        {
+          "positive": "y1",
+          "negative": "0",
+          "coefficient": 1
+        },
+        {
+          "positive": "y2",
+          "negative": "0",
+          "coefficient": -1
+        },
+        {
+          "positive": "x",
+          "negative": "0",
+          "coefficient": -2
+        },
+        {
+          "positive": "vdd",
+          "negative": "0",
+          "coefficient": 1
+        }
+      ],
+      "start_s": 0,
+      "end_s": 0.007
+    }
+  ],
+  "requirements": [
+    {
+      "id": "rails",
+      "quote": "Keep both outputs between 0 V and 10 V.",
+      "status": "bound",
+      "bindings": [
+        {
+          "path": [
+            "checks",
+            18
+          ],
+          "expected": {
+            "id": "y1_rail_min",
+            "description": "y1 rail min",
+            "origin": "extra_test",
+            "kind": "window_extremum",
+            "comparison": ">=",
+            "threshold": -0.001,
+            "uncertainty": null,
+            "index": 0,
+            "scale": 1,
+            "statistic": "min",
+            "start_s": 0,
+            "end_s": 0.007
+          }
+        },
+        {
+          "path": [
+            "checks",
+            19
+          ],
+          "expected": {
+            "id": "y1_rail_max",
+            "description": "y1 rail max",
+            "origin": "extra_test",
+            "kind": "window_extremum",
+            "comparison": "<=",
+            "threshold": 10.001,
+            "uncertainty": null,
+            "index": 0,
+            "scale": 1,
+            "statistic": "max",
+            "start_s": 0,
+            "end_s": 0.007
+          }
+        },
+        {
+          "path": [
+            "checks",
+            20
+          ],
+          "expected": {
+            "id": "y2_rail_min",
+            "description": "y2 rail min",
+            "origin": "extra_test",
+            "kind": "window_extremum",
+            "comparison": ">=",
+            "threshold": -0.001,
+            "uncertainty": null,
+            "index": 1,
+            "scale": 1,
+            "statistic": "min",
+            "start_s": 0,
+            "end_s": 0.007
+          }
+        },
+        {
+          "path": [
+            "checks",
+            21
+          ],
+          "expected": {
+            "id": "y2_rail_max",
+            "description": "y2 rail max",
+            "origin": "extra_test",
+            "kind": "window_extremum",
+            "comparison": "<=",
+            "threshold": 10.001,
+            "uncertainty": null,
+            "index": 1,
+            "scale": 1,
+            "statistic": "max",
+            "start_s": 0,
+            "end_s": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "id": "endpoint-low",
+      "quote": "At x = 0 V the differential output is -10 V.",
+      "status": "bound",
+      "bindings": [
+        {
+          "path": [
+            "checks",
+            4
+          ],
+          "expected": {
+            "id": "point_2_min",
+            "description": "point 2 min",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": ">=",
+            "threshold": -10.001,
+            "uncertainty": null,
+            "index": 2,
+            "scale": 1
+          }
+        },
+        {
+          "path": [
+            "checks",
+            5
+          ],
+          "expected": {
+            "id": "point_2_max",
+            "description": "point 2 max",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": "<=",
+            "threshold": -9.999,
+            "uncertainty": null,
+            "index": 2,
+            "scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "endpoint-high",
+      "quote": "At x = 10 V the differential output is +10 V.",
+      "status": "bound",
+      "bindings": [
+        {
+          "path": [
+            "checks",
+            16
+          ],
+          "expected": {
+            "id": "point_8_min",
+            "description": "point 8 min",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": ">=",
+            "threshold": 9.999,
+            "uncertainty": null,
+            "index": 8,
+            "scale": 1
+          }
+        },
+        {
+          "path": [
+            "checks",
+            17
+          ],
+          "expected": {
+            "id": "point_8_max",
+            "description": "point 8 max",
+            "origin": "extra_test",
+            "kind": "measurement",
+            "comparison": "<=",
+            "threshold": 10.001,
+            "uncertainty": null,
+            "index": 8,
+            "scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "affine",
+      "quote": "Use two affine functions of the input.",
+      "status": "bound",
+      "bindings": [
+        {
+          "path": [
+            "checks",
+            22
+          ],
+          "expected": {
+            "id": "y1_follows_x",
+            "description": "y1 follows x",
+            "origin": "extra_test",
+            "kind": "window_linear_combination",
+            "comparison": "<=",
+            "threshold": 0.001,
+            "uncertainty": null,
+            "terms": [
+              {
+                "positive": "y1",
+                "negative": "0",
+                "coefficient": 1
+              },
+              {
+                "positive": "x",
+                "negative": "0",
+                "coefficient": -1
+              }
+            ],
+            "start_s": 0,
+            "end_s": 0.007
+          }
+        },
+        {
+          "path": [
+            "checks",
+            23
+          ],
+          "expected": {
+            "id": "y2_complements_x",
+            "description": "y2 complements x",
+            "origin": "extra_test",
+            "kind": "window_linear_combination",
+            "comparison": "<=",
+            "threshold": 0.001,
+            "uncertainty": null,
+            "terms": [
+              {
+                "positive": "y2",
+                "negative": "0",
+                "coefficient": 1
+              },
+              {
+                "positive": "x",
+                "negative": "0",
+                "coefficient": 1
+              },
+              {
+                "positive": "vdd",
+                "negative": "0",
+                "coefficient": -1
+              }
+            ],
+            "start_s": 0,
+            "end_s": 0.007
+          }
+        },
+        {
+          "path": [
+            "checks",
+            24
+          ],
+          "expected": {
+            "id": "differential_law",
+            "description": "differential law",
+            "origin": "extra_test",
+            "kind": "window_linear_combination",
+            "comparison": "<=",
+            "threshold": 0.001,
+            "uncertainty": null,
+            "terms": [
+              {
+                "positive": "y1",
+                "negative": "0",
+                "coefficient": 1
+              },
+              {
+                "positive": "y2",
+                "negative": "0",
+                "coefficient": -1
+              },
+              {
+                "positive": "x",
+                "negative": "0",
+                "coefficient": -2
+              },
+              {
+                "positive": "vdd",
+                "negative": "0",
+                "coefficient": 1
+              }
+            ],
+            "start_s": 0,
+            "end_s": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "id": "supply",
+      "quote": "Use one 10 V supply for the implementation.",
+      "status": "unresolved",
+      "bindings": []
+    }
+  ],
+  "variants": {
+    "positive": {
+      "elements": [
+        {
+          "kind": "V",
+          "ref": "VDD",
+          "nodes": [
+            "vdd",
+            "0"
+          ],
+          "source": {
+            "dc_v": 10
+          }
+        },
+        {
+          "kind": "V",
+          "ref": "VX",
+          "nodes": [
+            "x",
+            "0"
+          ],
+          "source": {
+            "pwl": [
+              [
+                0,
+                0
+              ],
+              [
+                0.001,
+                0
+              ],
+              [
+                0.002,
+                5
+              ],
+              [
+                0.003,
+                5
+              ],
+              [
+                0.004,
+                10
+              ],
+              [
+                0.005,
+                10
+              ],
+              [
+                0.006,
+                0
+              ],
+              [
+                0.007,
+                0
+              ]
+            ]
+          }
+        },
+        {
+          "kind": "E",
+          "ref": "E1",
+          "nodes": [
+            "y1",
+            "0",
+            "x",
+            "y1"
+          ],
+          "gain": 100000000
+        },
+        {
+          "kind": "E",
+          "ref": "E2",
+          "nodes": [
+            "y2",
+            "0",
+            "ref5",
+            "inv"
+          ],
+          "gain": 100000000
+        },
+        {
+          "kind": "R",
+          "ref": "RT",
+          "nodes": [
+            "vdd",
+            "ref5"
+          ],
+          "value": 10000
+        },
+        {
+          "kind": "R",
+          "ref": "RB",
+          "nodes": [
+            "ref5",
+            "0"
+          ],
+          "value": 10000
+        },
+        {
+          "kind": "R",
+          "ref": "RI",
+          "nodes": [
+            "x",
+            "inv"
+          ],
+          "value": 10000
+        },
+        {
+          "kind": "R",
+          "ref": "RF",
+          "nodes": [
+            "y2",
+            "inv"
+          ],
+          "value": 10000
+        },
+        {
+          "kind": "R",
+          "ref": "RMOTOR",
+          "nodes": [
+            "y1",
+            "y2"
+          ],
+          "value": 100
+        }
+      ],
+      "expected_failed": []
+    },
+    "negative": {
+      "elements": [
+        {
+          "kind": "V",
+          "ref": "VDD",
+          "nodes": [
+            "vdd",
+            "0"
+          ],
+          "source": {
+            "dc_v": 10
+          }
+        },
+        {
+          "kind": "V",
+          "ref": "VX",
+          "nodes": [
+            "x",
+            "0"
+          ],
+          "source": {
+            "pwl": [
+              [
+                0,
+                0
+              ],
+              [
+                0.001,
+                0
+              ],
+              [
+                0.002,
+                5
+              ],
+              [
+                0.003,
+                5
+              ],
+              [
+                0.004,
+                10
+              ],
+              [
+                0.005,
+                10
+              ],
+              [
+                0.006,
+                0
+              ],
+              [
+                0.007,
+                0
+              ]
+            ]
+          }
+        },
+        {
+          "kind": "E",
+          "ref": "E1",
+          "nodes": [
+            "y1",
+            "0",
+            "x",
+            "y1"
+          ],
+          "gain": 100000000
+        },
+        {
+          "kind": "E",
+          "ref": "E2",
+          "nodes": [
+            "y2",
+            "0",
+            "ref5",
+            "inv"
+          ],
+          "gain": 100000000
+        },
+        {
+          "kind": "R",
+          "ref": "RT",
+          "nodes": [
+            "vdd",
+            "ref5"
+          ],
+          "value": 10000
+        },
+        {
+          "kind": "R",
+          "ref": "RB",
+          "nodes": [
+            "ref5",
+            "0"
+          ],
+          "value": 10000
+        },
+        {
+          "kind": "R",
+          "ref": "RI",
+          "nodes": [
+            "x",
+            "inv"
+          ],
+          "value": 10000
+        },
+        {
+          "kind": "R",
+          "ref": "RF",
+          "nodes": [
+            "y2",
+            "inv"
+          ],
+          "value": 20000
+        },
+        {
+          "kind": "R",
+          "ref": "RMOTOR",
+          "nodes": [
+            "y1",
+            "y2"
+          ],
+          "value": 100
+        }
+      ],
+      "expected_failed": [
+        "point_1_max",
+        "point_2_min",
+        "point_7_min",
+        "point_8_max",
+        "y2_rail_min",
+        "y2_rail_max",
+        "y2_complements_x",
+        "differential_law"
+      ]
+    }
+  }
+}
