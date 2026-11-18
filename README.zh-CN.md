@@ -55,3 +55,7 @@ $ltspice = "$env:LOCALAPPDATA\Programs\ADI\LTspice\LTspice.exe"
 ## 怎样读结果
 
 `linked_checks_passed_semantics_unverified` 表示关联的数值检查通过，需求解释与覆盖范围仍需审阅。没有对应检查的要求会显示为 `unresolved`。例如电机驱动的单电源实现与黑盒的器件数量在本版保留为待复核项。测量只覆盖保存的采样点和插值，原理图连接和实物表现需单独核验。小仓库直接从结构化电路生成网表，复用 spicelib 读取 RAW。MCP 复用官方 Python SDK，客户端按需启动本地子进程。
+
+## 许可证
+
+本仓库源码采用 GPL-3.0-only。详见 [LICENSE](LICENSE)。

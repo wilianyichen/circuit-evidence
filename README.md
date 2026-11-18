@@ -26,3 +26,7 @@ The motor-drive and resistor-black-box examples each include a positive and a de
 The supported primitives are resistors, DC current sources, DC or PWL voltage sources, and linear voltage-controlled voltage sources. Checks use saved transient voltages and derived values. The tool uses the local LTspice installation, [spicelib](https://pypi.org/project/spicelib/1.5.1/) for RAW reads, and the [official MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk).
 
 The results cover the declared checks under the supplied model. Review the requirement interpretation, check coverage, and any hardware acceptance separately. See the Chinese guide for exercise attribution and example limits.
+
+## License
+
+The source code is licensed under GPL-3.0-only. See [LICENSE](LICENSE).
